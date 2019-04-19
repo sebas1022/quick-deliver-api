@@ -13,8 +13,7 @@ var pedidoSchema = new Schema({
 		required: true
 	},
 	tiempoEstimado: {
-		type: String,
-		required: true
+		type: String
 	},
 	direccion: {
 		type: String,
