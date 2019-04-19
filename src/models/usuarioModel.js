@@ -2,7 +2,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
 var usuarioAppSchema = new Schema({
 	usuario: {
 		type: String,
@@ -25,12 +24,10 @@ var usuarioAppSchema = new Schema({
 		default: Date.now
 	},
 	activo: {
-		type: {
-			type: Boolean,
-			enum: [true, false]
-		},
+		type: Boolean,
+		enum: [true, false],
 		default: true
 	}
 });
 
-module.exports = mongoose.model('usuarioApp', usuarioAppSchema);
+module.exports = mongoose.model('usuario', usuarioAppSchema);

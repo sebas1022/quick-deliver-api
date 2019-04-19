@@ -1,8 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    utils = require('../utills/utils'),
-    UsuarioApp = mongoose.model('usuarioApp');
+    UsuarioApp = mongoose.model('usuario'),
+    md5   = require("blueimp-md5");
 
 function listadoUsuarioApp(req, res) {
     UsuarioApp.find({}, function(err, us) {
@@ -53,7 +53,7 @@ function borrarUsuarioApp(req, res) {
 }
 
 function loginUsuarioApp(req, res) {
-    UsuarioApp.find({ usuarioApp: req.params.user, contrasena: utils.MD5(req.params.password)}, function(err, us) {
+    UsuarioApp.find({ usuario: req.body.usuario, contrasena: md5(req.body.password)}, function(err, us) {
         if (err){
             res.send(err);
         }
