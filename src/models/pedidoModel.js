@@ -50,6 +50,13 @@ var pedidoSchema = new Schema({
 			enum: ['Recibido', 'En Camino', 'Completado']
 		}],
 		default: ['Recibido']
+	},
+	domiciliario: {
+		type: {},
+		default: ['No Asignado']
+	},
+	cliente: {
+		type: {}
 	}
 });
 

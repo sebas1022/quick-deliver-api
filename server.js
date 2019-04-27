@@ -5,6 +5,7 @@ port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     Pedido = require('./src/models/pedidoModel'), //created model loading here
     Usuario = require('./src/models/usuarioModel'), //created model loading here
+    Domiciliario = require('./src/models/domiciliarioModel'), //created model loading here
     bodyParser = require('body-parser');
 
 // mongoose instance connection url connection
@@ -25,6 +26,10 @@ var routes = require('./src/routes/pedidoRoutes'); //importing route
 routes(app); //register the route
 
 var routes = require('./src/routes/usuarioRoutes'); //importing route
+routes(app); //register the route
+
+
+var routes = require('./src/routes/domiciliarioRoutes'); //importing route
 routes(app); //register the route
 
 app.use(function (req, res) {

@@ -2,24 +2,16 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var usuarioAppSchema = new Schema({
-	usuario: {
+var domiciliarioSchema = new Schema({
+	nombre: {
 		type: String,
 		required: true
 	},
-	contrasena: {
-		type: String,
-		required: true
-	},
-	email: {
+	telefono: {
 		type: String,
 		required: true
 	},
 	fechaRegistro: {
-		type: Date,
-		default: Date.now
-	},
-	fechaActualizacion: {
 		type: Date,
 		default: Date.now
 	},
@@ -30,4 +22,4 @@ var usuarioAppSchema = new Schema({
 	}
 });
 
-module.exports = mongoose.model('usuario', usuarioAppSchema);
+module.exports = mongoose.model('domiciliario', domiciliarioSchema);

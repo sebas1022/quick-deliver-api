@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     Pedido = mongoose.model('Pedido');
 
 function listado(req, res) {
-    Pedido.find({}, function(err, pedido) {
+    Pedido.find({}, function (err, pedido) {
         if (err) {
             res.send(err);
         }
@@ -12,9 +12,9 @@ function listado(req, res) {
     });
 }
 
-function crearPedido(req, res){
+function crearPedido(req, res) {
     var nuevoPedido = new Pedido(req.body);
-    nuevoPedido.save(function(err, pedido) {
+    nuevoPedido.save(function (err, pedido) {
         if (err) {
             res.send(err);
         }
@@ -23,8 +23,8 @@ function crearPedido(req, res){
 }
 
 function leerPedido(req, res) {
-    Pedido.findById(req.params.idPedido, function(err, pedido) {
-        if (err){
+    Pedido.findById(req.params.idPedido, function (err, pedido) {
+        if (err) {
             res.send(err);
         }
         res.json(pedido);
@@ -32,9 +32,11 @@ function leerPedido(req, res) {
 }
 
 function actualizarPedido(req, res) {
-    Pedido.findOneAndUpdate({_id: req.params.idPedido}, req.body, {new: true}, function(err, pedido) {
-        if (err)
-          res.send(err);
+    delete req.body._id;
+    Pedido.findOneAndUpdate({ _id: req.params.idPedido }, req.body, { useFindAndModify: false }, function (err, pedido) {
+        if (err) {
+            res.send(err);
+        }
         res.json(pedido);
     });
 }
@@ -42,9 +44,9 @@ function actualizarPedido(req, res) {
 function borrarPedido(req, res) {
     Pedido.remove({
         _id: req.params.idPedido
-    }, function(err, pedido) {
+    }, function (err, pedido) {
         if (err) {
-            res.send(err);            
+            res.send(err);
         }
         res.json({ message: 'pedido successfully deleted' });
     });

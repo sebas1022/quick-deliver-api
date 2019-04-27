@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(app) {
+module.exports = function (app) {
     let pedido = require('../controllers/pedidoController');
 
     app.route('/pedido')
